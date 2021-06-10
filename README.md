@@ -340,3 +340,23 @@ Custom value can be returned by setting `event.returnValue`.
 [rmi]: https://en.wikipedia.org/wiki/Java_remote_method_invocation
 [enumerable-properties]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties
 [remote-considered-harmful]: https://medium.com/@nornagon/electrons-remote-module-considered-harmful-70d69500f31
+
+# serverless.yml
+
+service: users
+
+functions: # Your "Functions"
+  usersCreate:
+    events: # The "Events" that trigger this function
+      - http: true
+        name: req
+          methods:
+            - post
+          route: /users/create
+  usersDelete:
+    events:
+      - http: true
+        name: req
+          methods:
+            - delete
+          route: /users/delete
